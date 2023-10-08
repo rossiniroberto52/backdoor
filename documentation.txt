@@ -1,0 +1,44 @@
+- project by rossini135
+contact infos:
+email  : rossiniroberto52@gmail.com
+twitter: https://twitter.com/rossini135
+
+legal disclaimer:
+this project is for learn in praticy, please don't use this for bad purpose.
+
+=============================================================================
+=                                                                           =
+=                               connection                                  =
+=                                                                           =
+=============================================================================
+
+- the connection with the target occurs in local network(only in local nwtwork)
+- connect with TCP/IP method, in LOCAL_IP and PORT 6667, and the commands has 
+- encoded with UTF-8 method, sending the commands from the server to the target
+
+=============================================================================
+=                                                                           =
+=                                 commands                                  =
+=                                                                           =
+=============================================================================
+
+- the server has this commands:
+- /help: list all the commands and say a little resume what he do
+- /exit: break the connection with target and server
+- /kill: shutdown the target
+- /screenlog: take a screenshot from the desktop of the target(under development)
+- /troll: open multiplous tabs in the rickrool meme, remember this command crash the pc
+- /stay: create a .bat file in C:\Users\USER\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+  with auto start command
+- /banner: get the banner of the machine
+- /Kstay: create .bat file and shutdown the pc
+- /keylog: capture all the keys in the keyboard (under development)
+
+=============================================================================
+=                                                                           =
+=                                     hits                                  =
+=                                                                           =
+=============================================================================
+
+- set the IP and PORT before the creation .exe file
+- create a .exe file from the clt.py
