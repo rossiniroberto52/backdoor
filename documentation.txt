@@ -42,6 +42,10 @@ this project is for learn in praticy, please don't use this for bad purpose.
 =                                                                           =
 =============================================================================
 
+-------pt1---------
+- use: pip install pyinstaller to install pyinstaller
+
+-------pt2---------
 - to convert the clt.py in clt.exe use the the lib pyinstaller with the cmd:
 - pyinstaller clt.py --onefile
 - search for .exe file in \dist\ dir 
@@ -54,3 +58,4 @@ this project is for learn in praticy, please don't use this for bad purpose.
 
 - set the IP and PORT before the creation .exe file
 - create a .exe file from the clt.py
+- if you dont wanna use "/kill" command to shutdown the pc, use the command "shutdown -s -t 0"
