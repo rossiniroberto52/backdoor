@@ -38,6 +38,16 @@ this project is for learn in praticy, please don't use this for bad purpose.
 
 =============================================================================
 =                                                                           =
+=                                  to .exe                                  =
+=                                                                           =
+=============================================================================
+
+- to convert the clt.py in clt.exe use the the lib pyinstaller with the cmd:
+- pyinstaller clt.py --onefile
+- search for .exe file in \dist\ dir 
+
+=============================================================================
+=                                                                           =
 =                                     hits                                  =
 =                                                                           =
 =============================================================================

