@@ -24,7 +24,7 @@ this project is for learn in praticy, please don't use this for bad purpose.
 =                                                                           =
 =============================================================================
 
-- to make the project work, you need to install python in 3 version
+- to make the project work, you need to install python in your 3 version
 - install this libs to run the server.py: termcolor
 - command to install: pip install termcolor 
 - type in terminal: "python3 server.py". to run the server 
@@ -38,7 +38,7 @@ this project is for learn in praticy, please don't use this for bad purpose.
 - the server has this commands:
 - /help: list all the commands and say a little resume what he do
 - /exit: break the connection with target and server
-- /kill: shutdown the target
+- /kill: shutdown the target pc
 - /screenlog: take a screenshot from the desktop of the target(under development)
 - /troll: open multiplous tabs in the rickrool meme, remember this command crash the pc
 - /stay: create a .bat file in C:\Users\USER\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
@@ -86,3 +86,5 @@ this project is for learn in praticy, please don't use this for bad purpose.
 - set the IP and PORT before the creation .exe file
 - create a .exe file from the clt.py
 - if you dont wanna use "/kill" command to shutdown the pc, use the command "shutdown -s -t 0"(in Windows only)
+- this backdoor work only in Windows os. Linux and Mac Os, can't run that.
+- your free to modify that code, but remember this code has protectded with License
