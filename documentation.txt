@@ -20,7 +20,7 @@ this project is for learn in praticy, please don't use this for bad purpose.
 
 =============================================================================
 =                                                                           =
-=                           how it's works                                  =
+=                              how it's works                               =
 =                                                                           =
 =============================================================================
 
@@ -50,7 +50,7 @@ this project is for learn in praticy, please don't use this for bad purpose.
 
 =============================================================================
 =                                                                           =
-=                    how to trasform .py in .exe                            =
+=                       how to trasform .py in .exe                         =
 =                                                                           =
 =============================================================================
 
