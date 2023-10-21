@@ -53,21 +53,21 @@ this project is for learn in praticy, please don't use this for bad purpose.
 
 ================================== opt1 =====================================
 
--------pt1---------
+------ pt1 --------
 - use: "pip install pyinstaller" to install pyinstaller
 
--------pt2---------
+------ pt2 --------
 - to convert the clt.py in clt.exe use the the lib pyinstaller with the cmd:
 - pyinstaller clt.py --onefile
 - search for .exe file in \dist\ dir 
 
 ================================== opt2 =====================================
 
------- pt1 -------
+----- pt1 ------
 
 - use: "pip install auto-py-to-exe"
 
------- pt2 -------
+----- pt2 ------
 
 - type in command line: "auto-py-to-exe" a GUI gonna be appers
 - select the clt.py in respective folder
