@@ -1,9 +1,9 @@
 - project by rossini135
-contact infos:
-email  : rossiniroberto52@gmail.com
-twitter: https://twitter.com/rossini135
+- contact infos:
+- email  : rossiniroberto52@gmail.com
+- twitter: https://twitter.com/rossini135
 
-my portifolio: https://my-port-nu.vercel.app
+- my portifolio: https://my-port-nu.vercel.app
 
 legal disclaimer:
 this project is for learn in praticy, please don't use this for bad purpose.
