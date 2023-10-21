@@ -19,7 +19,7 @@ from sys import argv
 os.system("cls")
 
 #conn vars
-IP = "192.168.0.2"
+IP = "192.168.0.3"
 PORT = 6667
 
 #most used vars

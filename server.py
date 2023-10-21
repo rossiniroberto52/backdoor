@@ -1,7 +1,7 @@
 import socket, os, threading
 from termcolor import colored
 
-IP = "192.168.0.2"
+IP = "192.168.0.3"
 PORT = 6667
 BUFFER = 1024
 
@@ -11,7 +11,7 @@ server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 server.bind((IP, PORT))
 print(colored("server runing on ip:{0} and port:{1}".format(IP,PORT), "green"))
 print(colored("\n to send server commands type: /[command]}","red"))
-server.listen(1)
+server.listen(10)
 conn, addr = server.accept()
 print(colored("conn recived from:{0}".format(addr), "green"))
 if conn:
