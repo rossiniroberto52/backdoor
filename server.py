@@ -1,11 +1,72 @@
-import socket, os, threading
+import socket, os, threading, random
 from termcolor import colored
+from random import randint
 
 IP = "192.168.0.3"
 PORT = 6667
 BUFFER = 1024
 
 os.system("cls")
+
+choice_LOGO = randint(1, 4)
+
+logo1 = """
+    Art by: Hayley Jane Wakenshaw
+           _e-e_
+         _(-._.-)_
+      .-(  `---'  )-. hjw
+     __\ \\\___/// /__
+    '-._.'/M\ /M\`._,-
+"""
+
+logo2 = """
+    art by: Joan Stark
+          _          _          _          _          _
+        >(')____,  >(')____,  >(')____,  >(')____,  >(') ___,
+          (` =~~/    (` =~~/    (` =~~/    (` =~~/    (` =~~/
+    jgs~^~^`---'~^~^~^`---'~^~^~^`---'~^~^~^`---'~^~^~^`---'~^~^~
+"""
+
+logo3 = """
+    art by: Argiris A. Kranidiotis
+     ____________________________
+    /                           /\
+   /    Windows spy module    _/ /\
+  /                          / \/
+ /                           /\
+/___________________________/ /
+\___________________________\/
+ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+"""
+
+logo4 = """
+Art by Joan G. Stark
+    ___
+    \_/
+     |._
+     |'."-._.-""--.-"-.__.-'/
+     |  \       .-.        (
+     |   |     (@.@)        )
+     |   |   '=.|m|.='     /
+jgs  |  /    .='`"``=.    /
+     |.'                 (
+     |.-"-.__.-""-.__.-"-.)
+     |
+     |
+     |
+"""
+
+if(choice_LOGO == 1):
+    print(logo1)
+if(choice_LOGO == 2):
+    print(logo2)
+if(choice_LOGO == 3):
+    print(logo3)
+if(choice_LOGO == 4):
+    print(logo4)
+
+
+
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) 
 server.bind((IP, PORT))
