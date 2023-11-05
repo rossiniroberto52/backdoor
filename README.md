@@ -38,7 +38,7 @@ this project is for learn in praticy, please don't use this for bad purpose.
 - /help: list all the commands and say a little resume what he do
 - /exit: break the connection with target and server
 - /kill: shutdown the target pc
-- /screenlog: take a screenshot from the desktop of the target(under development)
+- /screenlog: take a screenshot from the desktop of the target
 - /troll: open multiplous tabs in the rickrool meme, remember this command crash the pc
 - /stay: create a .bat file in C:\Users\USER\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
   with auto start command
